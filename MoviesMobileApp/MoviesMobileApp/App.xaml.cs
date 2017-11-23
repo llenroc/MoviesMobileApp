@@ -12,11 +12,9 @@ namespace MoviesMobileApp
             MainPage = new MoviesMobileAppPage();
         }
 
-        protected async override void OnStart()
+        protected override void OnStart()
         {
             // Handle when your app starts
-            var result = await new Service.Contracts.MoviesClient().GetUpcomingFeedsAsync(1);
-            var result1 = await new Service.Contracts.ConfigClient().GetServiceConfigAsync();
         }
 
         protected override void OnSleep()
