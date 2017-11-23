@@ -38,6 +38,8 @@
     <Compile Include="Models\ServiceConfiguration.cs" />
     <Compile Include="Models\Images.cs" />
     <Compile Include="Contracts\ConfigClient.cs" />
+    <Compile Include="Models\Genre.cs" />
+    <Compile Include="Models\GenresData.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

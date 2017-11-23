@@ -1,4 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:MoviesMobileApp" x:Class="MoviesMobileApp.Pages.MoviesMobileAppPage">
-	<Label Text="Welcome to Xamarin Forms!" VerticalOptions="Center" HorizontalOptions="Center" />
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="MoviesMobileApp.Pages.MoviesMobileAppPage"
+    xmlns:vm="clr-namespace:MoviesMobileApp.ViewModel"
+    Title="{Binding Title}"
+    IsBusy="{Binding IsBusy}"
+    xmlns:views="clr-namespace:MoviesMobileApp.Views">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Icon="ic_search_white" Command="{Binding SearchIconCommand}" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.BindingContext>
+        <vm:MoviesMobileAppViewModel />
+    </ContentPage.BindingContext>
+    <Grid RowSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <SearchBar x:Name="_searchBar" Grid.Row="0" IsVisible="{Binding IsSearchBarVisible}" />
+        <ListView Grid.Row="1" ItemTapped="Handle_ItemTapped" RowHeight="120" CachingStrategy="RecycleElement" BackgroundColor="#F4F4F4" ItemsSource="{Binding Feeds}" ItemAppearing="Handle_ItemAppearing">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <views:FeedViewCell />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
 </ContentPage>

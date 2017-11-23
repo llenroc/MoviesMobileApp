@@ -41,11 +41,11 @@ namespace MoviesMobileApp.Service
             }
             else if (result.StatusCode == HttpStatusCode.Unauthorized)
             {
-                errorMessage = "";
+                errorMessage = "Unauthorized";
             }
             else if (result.StatusCode == HttpStatusCode.NotFound)
             {
-                errorMessage = "";
+                errorMessage = "NotFound";
             }
             return new Reponse<T>(resultItem, result.StatusCode, errorMessage);
         }

@@ -1,6 +1,48 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Application xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="MoviesMobileApp.App">
 	<Application.Resources>
 		<!-- Application resource dictionary -->
+        <ResourceDictionary>
+
+            <!-- Colors -->
+            <Color x:Key="BlackTextColor">#000000</Color>
+            <Color x:Key="WhiteTextColor">#ffffff</Color>
+            <Color x:Key="NavigationBarBackgroundColor">#091C24</Color>
+
+            <!-- Fonts Names -->
+            <x:String x:Key="RegulariOS">Helvetica</x:String>
+            <x:String x:Key="RegularAndroid">sans-serif</x:String>
+
+            <!-- Styles  -->
+            <Style x:Key="RegularLabel" TargetType="Label">
+                <Setter Property="TextColor" Value="{DynamicResource BlackTextColor}" />
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="FontFamily">
+                    <Setter.Value>
+                         <OnPlatform x:TypeArguments="x:String">
+                            <On Platform="Android" Value="{StaticResource RegularAndroid}" />
+                            <On Platform="iOS" Value="{StaticResource RegulariOS}" />
+                        </OnPlatform>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style x:Key="TitleBlackBoldRegularLabel" TargetType="Label" BasedOn="{StaticResource RegularLabel}">
+                <Setter Property="FontSize" Value="20" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+            
+            <Style x:Key="DetailItalicBlackRegularLabel" TargetType="Label" BasedOn="{StaticResource RegularLabel}">
+                <Setter Property="FontAttributes" Value="Italic" />
+            </Style>
+
+            <Style x:Key="DetailBoldBlackRegularLabel" TargetType="Label" BasedOn="{StaticResource RegularLabel}">
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+
+            <Style x:Key="DetailBlackRegularLabel" TargetType="Label" BasedOn="{StaticResource RegularLabel}">
+            </Style>
+            
+        </ResourceDictionary>
 	</Application.Resources>
 </Application>

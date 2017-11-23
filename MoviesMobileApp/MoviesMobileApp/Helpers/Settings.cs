@@ -27,6 +27,9 @@ namespace MoviesMobileApp.Helpers
 		private const string SettingsKey = "settings_key";
 		private static readonly string SettingsDefault = string.Empty;
 
+        private const string GenresKey = "genres_key";
+        private static readonly string GenresDefault = string.Empty;
+
 		#endregion
 
         public static ServiceConfiguration Configuration
@@ -44,6 +47,24 @@ namespace MoviesMobileApp.Helpers
             {
                 var convertedValue = JsonConvert.SerializeObject(value);
                 AppSettings.AddOrUpdateValue(SettingsKey, convertedValue);
+            }
+        }
+
+        public static GenresData GenresData
+        {
+            get
+            {
+                var config = AppSettings.GetValueOrDefault(GenresKey, GenresDefault);
+                if (string.IsNullOrWhiteSpace(config))
+                {
+                    return null;
+                }
+                return JsonConvert.DeserializeObject<GenresData>(config);
+            }
+            set
+            {
+                var convertedValue = JsonConvert.SerializeObject(value);
+                AppSettings.AddOrUpdateValue(GenresKey, convertedValue);
             }
         }
 	}

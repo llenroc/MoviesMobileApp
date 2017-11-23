@@ -1,6 +1,8 @@
 ﻿using MoviesMobileApp.Pages;
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 
+[assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace MoviesMobileApp
 {
     public partial class App : Application
@@ -9,7 +11,11 @@ namespace MoviesMobileApp
         {
             InitializeComponent();
 
-            MainPage = new MoviesMobileAppPage();
+            MainPage = new Xamarin.Forms.NavigationPage(new MoviesMobileAppPage())
+            {
+                BarTextColor = GetAppResource<Color>("WhiteTextColor"),
+                BarBackgroundColor = GetAppResource<Color>("NavigationBarBackgroundColor")
+            };
         }
 
         protected override void OnStart()
@@ -25,6 +31,11 @@ namespace MoviesMobileApp
         protected override void OnResume()
         {
             // Handle when your app resumes
+        }
+
+        public static T GetAppResource<T>(string key)
+        {
+            return (T)Current.Resources[key];
         }
     }
 }
