@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using MoviesMobileApp.Pages;
+using Xamarin.Forms;
 
 namespace MoviesMobileApp
 {
@@ -11,9 +12,11 @@ namespace MoviesMobileApp
             MainPage = new MoviesMobileAppPage();
         }
 
-        protected override void OnStart()
+        protected async override void OnStart()
         {
             // Handle when your app starts
+            var result = await new Service.Contracts.MoviesClient().GetUpcomingFeedsAsync(1);
+            var result1 = await new Service.Contracts.ConfigClient().GetServiceConfigAsync();
         }
 
         protected override void OnSleep()

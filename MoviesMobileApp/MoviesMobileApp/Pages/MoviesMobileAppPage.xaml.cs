@@ -1,6 +1,6 @@
 ﻿using Xamarin.Forms;
 
-namespace MoviesMobileApp
+namespace MoviesMobileApp.Pages
 {
     public partial class MoviesMobileAppPage : ContentPage
     {
