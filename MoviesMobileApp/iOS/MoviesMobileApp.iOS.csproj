@@ -126,6 +126,12 @@
     <Reference Include="FFImageLoading.Forms.Touch">
       <HintPath>..\packages\Xamarin.FFImageLoading.Forms.2.2.25\lib\Xamarin.iOS10\FFImageLoading.Forms.Touch.dll</HintPath>
     </Reference>
+    <Reference Include="Plugin.Connectivity.Abstractions">
+      <HintPath>..\packages\Xam.Plugin.Connectivity.3.0.3\lib\Xamarin.iOS10\Plugin.Connectivity.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Connectivity">
+      <HintPath>..\packages\Xam.Plugin.Connectivity.3.0.3\lib\Xamarin.iOS10\Plugin.Connectivity.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MoviesMobileApp\MoviesMobileApp.csproj">
@@ -155,7 +161,6 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
-    <Compile Include="Helpers\Settings.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\poster_placeholder.jpg" />
@@ -168,6 +173,15 @@
     <BundleResource Include="Resources\ic_star_rate.png" />
     <BundleResource Include="Resources\ic_star_rate%402x.png" />
     <BundleResource Include="Resources\ic_star_rate%403x.png" />
+    <BundleResource Include="Resources\ic_signal_wifi_off.png" />
+    <BundleResource Include="Resources\ic_signal_wifi_off%402x.png" />
+    <BundleResource Include="Resources\ic_signal_wifi_off%403x.png" />
+    <BundleResource Include="Resources\ic_star_rate_white.png" />
+    <BundleResource Include="Resources\ic_star_rate_white%402x.png" />
+    <BundleResource Include="Resources\ic_star_rate_white%403x.png" />
+    <BundleResource Include="Resources\ic_date_range_white.png" />
+    <BundleResource Include="Resources\ic_date_range_white%402x.png" />
+    <BundleResource Include="Resources\ic_date_range_white%403x.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.2.5.0.91635\build\netstandard1.0\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.5.0.91635\build\netstandard1.0\Xamarin.Forms.targets')" />

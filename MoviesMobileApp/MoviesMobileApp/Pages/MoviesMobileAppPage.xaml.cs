@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Linq;
 using MoviesMobileApp.ViewModel;
+using Plugin.Connectivity;
 using Xamarin.Forms;
-using Xamarin.Forms.PlatformConfiguration;
-using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
 namespace MoviesMobileApp.Pages
 {
@@ -14,9 +13,22 @@ namespace MoviesMobileApp.Pages
             InitializeComponent();
             ViewModel.FocusSearchBar = FocusSearchBar;
             ViewModel.UnFocusSearchBar = UnFocusSearchBar;
+            NavigationPage.SetBackButtonTitle(this, string.Empty);
         }
 
         public MoviesMobileAppViewModel ViewModel => BindingContext as MoviesMobileAppViewModel;
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            CrossConnectivity.Current.ConnectivityChanged += ViewModel.ConnectivityChanged;
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            CrossConnectivity.Current.ConnectivityChanged -= ViewModel.ConnectivityChanged;
+        }
 
         void Handle_ItemAppearing(object sender, Xamarin.Forms.ItemVisibilityEventArgs e)
         {
@@ -40,7 +52,7 @@ namespace MoviesMobileApp.Pages
         {
             (sender as ListView).SelectedItem = null;
             var feedVM = e.Item as FeedViewModel;
-            if(feedVM != null)
+            if (feedVM != null)
             {
                 feedVM.SendItemTapped();
             }

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="MoviesMobileApp.Pages.FeedDetailsPage"
+    xmlns:ffimage="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    BackgroundColor="{DynamicResource PageBackgroundColor}"
+    Title="{Binding Title}"
+    IsBusy="{Binding IsBusy}"
+    xmlns:views="clr-namespace:MoviesMobileApp.Views">
+	<ContentPage.Content>
+        <ScrollView>
+            <Grid RowSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="300" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <ffimage:CachedImage Aspect="AspectFill" LoadingPlaceholder="poster_placeholder" Source="{Binding Backdrop}" />
+                    <BoxView Color="{DynamicResource BlackTransparent}" />
+                    <StackLayout VerticalOptions="Start" Margin="10" Orientation="Horizontal">
+                        <ffimage:CachedImage WidthRequest="85" HeightRequest="150" Aspect="AspectFill" LoadingPlaceholder="poster_placeholder" Source="{Binding Poster}"/>
+                        <Label Style="{DynamicResource TitleWhiteBoldRegularLabel}" Text="{Binding FeedTitle}" />
+                    </StackLayout>
+                    <StackLayout VerticalOptions="End" Padding="10">
+                        <Grid HorizontalOptions="End">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0" Style="{DynamicResource DetailBoldWhiteRegularLabel}" HorizontalTextAlignment="End" VerticalTextAlignment="Center" Text="{Binding VoteAverage}" />
+                            <Image Grid.Column="1" WidthRequest="20" Source="ic_star_rate_white" />
+                        </Grid>
+                        <Grid HorizontalOptions="End">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0" Style="{DynamicResource DetailWhiteRegularLabel}" HorizontalTextAlignment="End" VerticalTextAlignment="Center" Text="{Binding ReleaseDate}" />
+                            <Image Grid.Column="1" WidthRequest="20" Source="ic_date_range_white" />
+                        </Grid>
+                        <Label FontAttributes="Italic" HorizontalTextAlignment="End" Style="{DynamicResource DetailItalicWhiteRegularLabel}" Text="{Binding GenresDetailed}" />
+                    </StackLayout>
+                </Grid>
+                
+                <StackLayout BackgroundColor="{DynamicResource PageBackgroundColor}" Grid.Row="1"  Padding="0,10">
+                    <Label Margin="5,0" Style="{DynamicResource TitleBlackBoldRegularLabel}" Text="Overview" />
+                    <Label Margin="5,0" Style="{DynamicResource DetailBlackRegularLabel}" Text="{Binding Overview}" />
+
+                    <StackLayout VerticalOptions="EndAndExpand">
+                        <Label Margin="5,10,5,0" Style="{DynamicResource TitleBlackBoldRegularLabel}" Text="Recommendations" />
+                        <views:HorizontalListControl HeightRequest="200" SelectedItemChanged="Handle_SelectedItemChanged" ItemsSource="{Binding Recommendations}">
+                            <views:HorizontalListControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid HeightRequest="200" WidthRequest="200" Padding="2">
+                                        <Image BackgroundColor="{DynamicResource GrayHolder}" Aspect="AspectFill" Source="{Binding Poster}"/>
+                                        <Grid VerticalOptions="End" >
+                                            <BoxView Color="{DynamicResource BlackTransparent}" />
+                                            <StackLayout Padding="5" >
+                                                <Label HorizontalTextAlignment="End" Style="{DynamicResource DetailBoldWhiteRegularLabel}" Text="{Binding FeedTitle}" />
+                                                <Grid HorizontalOptions="End">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*" />
+                                                        <ColumnDefinition Width="Auto" />
+                                                    </Grid.ColumnDefinitions>
+                                                    <Label Grid.Column="0" Style="{DynamicResource DetailWhiteRegularLabel}" HorizontalTextAlignment="End" VerticalTextAlignment="Center" Text="{Binding ReleaseDate}" />
+                                                    <Image Grid.Column="1" WidthRequest="20" Source="ic_date_range_white" />
+                                                </Grid>
+                                            </StackLayout>
+                                        </Grid>
+                                    </Grid>
+                                </DataTemplate>
+                            </views:HorizontalListControl.ItemTemplate>
+                        </views:HorizontalListControl>
+                    </StackLayout>
+                </StackLayout>
+            </Grid>
+        </ScrollView>
+	</ContentPage.Content>
+</ContentPage>

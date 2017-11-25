@@ -3,9 +3,9 @@ using System.Net;
 
 namespace MoviesMobileApp
 {
-    public sealed class Reponse<T>
+    public sealed class Response<T>
     {
-        internal Reponse(T result, HttpStatusCode statusCode, string errorMessage = null)
+        internal Response(T result, HttpStatusCode statusCode, string errorMessage = null)
         {
             Result = result;
             StatusCode = statusCode;

@@ -1,5 +1,4 @@
 ﻿using System;
-
 using Android.App;
 using Android.Content;
 using Android.Content.PM;
@@ -23,7 +22,7 @@ namespace MoviesMobileApp.Droid
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
 
-            CachedImageRenderer.Init();
+            CachedImageRenderer.Init(true);
 
             LoadApplication(new App());
         }

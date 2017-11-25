@@ -30,8 +30,8 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceClient.cs" />
-    <Compile Include="Models\Reponse.cs" />
-    <Compile Include="Models\UpcomingFeeds.cs" />
+    <Compile Include="Models\Response.cs" />
+    <Compile Include="Models\FeedCollectionData.cs" />
     <Compile Include="Models\Feed.cs" />
     <Compile Include="Models\Dates.cs" />
     <Compile Include="Contracts\MoviesClient.cs" />

@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 
 namespace MoviesMobileApp.Service.Models
 {
-    public class UpcomingFeeds
+    public class FeedCollectionData
     {
         [JsonProperty("results")]
         public List<Feed> Results { get; set; }

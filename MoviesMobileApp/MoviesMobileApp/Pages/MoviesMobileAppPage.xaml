@@ -17,13 +17,16 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <SearchBar x:Name="_searchBar" Grid.Row="0" IsVisible="{Binding IsSearchBarVisible}" />
-        <ListView Grid.Row="1" ItemTapped="Handle_ItemTapped" RowHeight="120" CachingStrategy="RecycleElement" BackgroundColor="#F4F4F4" ItemsSource="{Binding Feeds}" ItemAppearing="Handle_ItemAppearing">
+        <SearchBar x:Name="_searchBar" Text="{Binding SearchText}" SearchCommand="{Binding SearchCommand}" Grid.Row="0" IsVisible="{Binding IsSearchBarVisible}" />
+        <ListView Grid.Row="1" ItemTapped="Handle_ItemTapped" RowHeight="120" CachingStrategy="RecycleElement" BackgroundColor="{DynamicResource PageBackgroundColor}" ItemsSource="{Binding Feeds}" ItemAppearing="Handle_ItemAppearing">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <views:FeedViewCell />
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        <Grid Grid.Row="0" Grid.RowSpan="2" BackgroundColor="{DynamicResource PageBackgroundColor}" IsVisible="{Binding IsNotConnected}">
+            <Image VerticalOptions="Center" HorizontalOptions="Center" Source="ic_signal_wifi_off" />
+        </Grid>
     </Grid>
 </ContentPage>

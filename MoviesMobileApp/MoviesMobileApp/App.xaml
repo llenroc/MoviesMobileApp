@@ -8,6 +8,9 @@
             <Color x:Key="BlackTextColor">#000000</Color>
             <Color x:Key="WhiteTextColor">#ffffff</Color>
             <Color x:Key="NavigationBarBackgroundColor">#091C24</Color>
+            <Color x:Key="PageBackgroundColor">#F4F4F4</Color>
+            <Color x:Key="GrayHolder">#C4CBD2</Color>
+            <Color x:Key="BlackTransparent">#B3000000</Color>
 
             <!-- Fonts Names -->
             <x:String x:Key="RegulariOS">Helvetica</x:String>
@@ -41,6 +44,26 @@
             </Style>
 
             <Style x:Key="DetailBlackRegularLabel" TargetType="Label" BasedOn="{StaticResource RegularLabel}">
+            </Style>
+
+            <Style x:Key="DetailItalicWhiteRegularLabel" TargetType="Label" BasedOn="{StaticResource RegularLabel}">
+                <Setter Property="TextColor" Value="{DynamicResource WhiteTextColor}" />
+                <Setter Property="FontAttributes" Value="Italic" />
+            </Style>
+
+            <Style x:Key="DetailWhiteRegularLabel" TargetType="Label" BasedOn="{StaticResource RegularLabel}">
+                <Setter Property="TextColor" Value="{DynamicResource WhiteTextColor}" />
+            </Style>
+
+            <Style x:Key="DetailBoldWhiteRegularLabel" TargetType="Label" BasedOn="{StaticResource RegularLabel}">
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="TextColor" Value="{DynamicResource WhiteTextColor}" />
+            </Style>
+
+             <Style x:Key="TitleWhiteBoldRegularLabel" TargetType="Label" BasedOn="{StaticResource RegularLabel}">
+                <Setter Property="FontSize" Value="22" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="TextColor" Value="{DynamicResource WhiteTextColor}" />
             </Style>
             
         </ResourceDictionary>

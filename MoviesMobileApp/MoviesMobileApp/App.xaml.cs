@@ -11,7 +11,7 @@ namespace MoviesMobileApp
         {
             InitializeComponent();
 
-            MainPage = new Xamarin.Forms.NavigationPage(new MoviesMobileAppPage())
+            MainPage = new NavigationPage(new MoviesMobileAppPage())
             {
                 BarTextColor = GetAppResource<Color>("WhiteTextColor"),
                 BarBackgroundColor = GetAppResource<Color>("NavigationBarBackgroundColor")

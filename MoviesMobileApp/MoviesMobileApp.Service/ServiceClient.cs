@@ -11,7 +11,7 @@ namespace MoviesMobileApp.Service
         public const string BASE_URL = "https://api.themoviedb.org";
         public const string API_VER = "/3";
         internal const string API_KEY = "1f54bd990f1cdfb230adb312546d765d";
-        
+
         static int _timeoutMilliseconds = 10000;
         static readonly HttpClient _httpClient = new HttpClient
         {
@@ -29,7 +29,7 @@ namespace MoviesMobileApp.Service
 
         internal T DeSerializeObject<T>(string json) => JsonConvert.DeserializeObject<T>(json);
 
-        internal async Task<Reponse<T>> GetResponseDataAsync<T>(string segment)
+        internal async Task<Response<T>> GetResponseDataAsync<T>(string segment)
         {
             var result = await GetDataAsync(API_VER + segment);
             var responseMessage = await result.Content.ReadAsStringAsync();
@@ -47,7 +47,7 @@ namespace MoviesMobileApp.Service
             {
                 errorMessage = "NotFound";
             }
-            return new Reponse<T>(resultItem, result.StatusCode, errorMessage);
+            return new Response<T>(resultItem, result.StatusCode, errorMessage);
         }
     }
 }
