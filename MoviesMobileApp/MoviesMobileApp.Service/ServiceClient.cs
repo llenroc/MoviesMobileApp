@@ -3,11 +3,21 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 namespace MoviesMobileApp.Service
 {
     public abstract class ServiceClient
     {
+        readonly JsonSerializerSettings _defaultJsonSerializerSettings = new JsonSerializerSettings
+        {
+            ContractResolver = new DefaultContractResolver
+            {
+                NamingStrategy = new SnakeCaseNamingStrategy()
+            },
+            Formatting = Formatting.Indented
+        };
+
         public const string BASE_URL = "https://api.themoviedb.org";
         public const string API_VER = "/3";
         internal const string API_KEY = "1f54bd990f1cdfb230adb312546d765d";
@@ -25,9 +35,9 @@ namespace MoviesMobileApp.Service
 
         internal Task<HttpResponseMessage> GetDataAsync(string endpoint) => _httpClient.GetAsync(endpoint);
 
-        internal string SerializeObject(object obj) => JsonConvert.SerializeObject(obj);
+        internal string SerializeObject(object obj) => JsonConvert.SerializeObject(obj, _defaultJsonSerializerSettings);
 
-        internal T DeSerializeObject<T>(string json) => JsonConvert.DeserializeObject<T>(json);
+        internal T DeSerializeObject<T>(string json) => JsonConvert.DeserializeObject<T>(json, _defaultJsonSerializerSettings);
 
         internal async Task<Response<T>> GetResponseDataAsync<T>(string segment)
         {
